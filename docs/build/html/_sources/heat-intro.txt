@@ -78,8 +78,8 @@ Image & flover & key
 --------------------
 Download and create image::
 
-  curl -O http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-1606.qcow2
-  glance image-create --name='centos7_image' --visibility=public --container-format=bare --disk-format=qcow2 --file=CentOS-7-x86_64-GenericCloud-1606.qcow2
+  curl -O http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2
+  glance image-create --name='centos7_image' --visibility=public --container-format=bare --disk-format=qcow2 --file=CentOS-7-x86_64-GenericCloud.qcow2
 
   +------------------+--------------------------------------+
   | Property         | Value                                |
