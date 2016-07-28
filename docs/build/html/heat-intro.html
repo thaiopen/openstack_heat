@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Heat - OpenStack &mdash; Heat Orchestration lastest documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Heat Orchestration lastest documentation" href="index.html"/>
+        <link rel="next" title="Heat Orchestration Template (HOT) Guide" href="heat-template.html"/>
+        <link rel="prev" title="Welcome to Heat Orchestration’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Heat Orchestration
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                lastest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Heat - OpenStack</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lab">Lab</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-project">Create Project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#admin-project">Admin project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#demo-project">Demo project</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-for-test">Prepare for Test</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image-flover-key">Image &amp; flover &amp; key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-provider-network">Create provider Network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-sub-network-l3-segment">create sub network (L3 segment)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#network-type-of-tenent-network">Network type of Tenent network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#definition">Definition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="heat-template.html">Heat Orchestration Template (HOT) Guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Heat Orchestration</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Heat - OpenStack</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/heat-intro.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="heat-openstack">
+<h1>Heat - OpenStack<a class="headerlink" href="#heat-openstack" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lab">
+<h2>Lab<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
+<p>Log in as admin, go to <code class="docutils literal"><span class="pre">Project</span> <span class="pre">&gt;</span> <span class="pre">Access</span> <span class="pre">&amp;</span> <span class="pre">Security</span> <span class="pre">&gt;</span> <span class="pre">Download</span> <span class="pre">Openstack</span> <span class="pre">RC</span> <span class="pre">file</span> <span class="pre">V3</span></code></p>
+<img alt="_images/rc01.png" src="_images/rc01.png" />
+<img alt="_images/rc02.png" src="_images/rc02.png" />
+<p>copy file and save to <code class="docutils literal"><span class="pre">keystonerc_admin</span></code> in /root</p>
+<div class="section" id="create-project">
+<h3>Create Project<a class="headerlink" href="#create-project" title="Permalink to this headline">¶</a></h3>
+<p>create 2 project Admin and Demo for testing.</p>
+<div class="section" id="admin-project">
+<h4>Admin project<a class="headerlink" href="#admin-project" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">keystonerc_admin</span>
+<span class="n">openstack</span> <span class="n">project</span> <span class="n">create</span> <span class="o">--</span><span class="n">description</span> <span class="s2">&quot;Admin Project&quot;</span> <span class="n">admin</span>
+<span class="n">openstack</span> <span class="n">user</span> <span class="n">create</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">prompt</span> <span class="n">admin</span>
+<span class="n">openstack</span> <span class="n">role</span> <span class="n">create</span> <span class="n">admin</span>
+<span class="n">openstack</span> <span class="n">role</span> <span class="n">add</span> <span class="o">--</span><span class="n">project</span> <span class="n">admin</span> <span class="o">--</span><span class="n">user</span> <span class="n">admin</span> <span class="n">admin</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="demo-project">
+<h4>Demo project<a class="headerlink" href="#demo-project" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">project</span> <span class="n">create</span> <span class="o">--</span><span class="n">description</span> <span class="s2">&quot;Demo Project&quot;</span> <span class="n">demo</span>
+<span class="o">+-------------+----------------------------------+</span>
+<span class="o">|</span> <span class="n">Field</span>       <span class="o">|</span> <span class="n">Value</span>                            <span class="o">|</span>
+<span class="o">+-------------+----------------------------------+</span>
+<span class="o">|</span> <span class="n">description</span> <span class="o">|</span> <span class="n">Demo</span> <span class="n">Project</span>                     <span class="o">|</span>
+<span class="o">|</span> <span class="n">enabled</span>     <span class="o">|</span> <span class="kc">True</span>                             <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>          <span class="o">|</span> <span class="n">f47553804d5d48529eea395c29da941d</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>        <span class="o">|</span> <span class="n">demo</span>                             <span class="o">|</span>
+<span class="o">+-------------+----------------------------------+</span>
+
+<span class="n">openstack</span> <span class="n">user</span> <span class="n">create</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">prompt</span> <span class="n">demo</span>
+<span class="n">User</span> <span class="n">Password</span><span class="p">:</span>
+<span class="n">Repeat</span> <span class="n">User</span> <span class="n">Password</span><span class="p">:</span>
+<span class="o">+----------+----------------------------------+</span>
+<span class="o">|</span> <span class="n">Field</span>    <span class="o">|</span> <span class="n">Value</span>                            <span class="o">|</span>
+<span class="o">+----------+----------------------------------+</span>
+<span class="o">|</span> <span class="n">email</span>    <span class="o">|</span> <span class="kc">None</span>                             <span class="o">|</span>
+<span class="o">|</span> <span class="n">enabled</span>  <span class="o">|</span> <span class="kc">True</span>                             <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>       <span class="o">|</span> <span class="mi">1</span><span class="n">f119268b8e2437a8ce94f951c3ae116</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>     <span class="o">|</span> <span class="n">demo</span>                             <span class="o">|</span>
+<span class="o">|</span> <span class="n">username</span> <span class="o">|</span> <span class="n">demo</span>                             <span class="o">|</span>
+<span class="o">+----------+----------------------------------+</span>
+
+<span class="n">openstack</span> <span class="n">role</span> <span class="n">create</span> <span class="n">user</span>
+<span class="o">+-----------+----------------------------------+</span>
+<span class="o">|</span> <span class="n">Field</span>     <span class="o">|</span> <span class="n">Value</span>                            <span class="o">|</span>
+<span class="o">+-----------+----------------------------------+</span>
+<span class="o">|</span> <span class="n">domain_id</span> <span class="o">|</span> <span class="kc">None</span>                             <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>        <span class="o">|</span> <span class="n">e718c008eb8343ada2f342c2ab986e00</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">user</span>                             <span class="o">|</span>
+<span class="o">+-----------+----------------------------------+</span>
+
+<span class="n">openstack</span> <span class="n">role</span> <span class="n">add</span> <span class="o">--</span><span class="n">project</span> <span class="n">demo</span> <span class="o">--</span><span class="n">user</span> <span class="n">demo</span> <span class="n">user</span>
+<span class="o">+-----------+----------------------------------+</span>
+<span class="o">|</span> <span class="n">Field</span>     <span class="o">|</span> <span class="n">Value</span>                            <span class="o">|</span>
+<span class="o">+-----------+----------------------------------+</span>
+<span class="o">|</span> <span class="n">domain_id</span> <span class="o">|</span> <span class="kc">None</span>                             <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>        <span class="o">|</span> <span class="n">e718c008eb8343ada2f342c2ab986e00</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>      <span class="o">|</span> <span class="n">user</span>                             <span class="o">|</span>
+<span class="o">+-----------+----------------------------------+</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="prepare-for-test">
+<h3>Prepare for Test<a class="headerlink" href="#prepare-for-test" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="image-flover-key">
+<h4>Image &amp; flover &amp; key<a class="headerlink" href="#image-flover-key" title="Permalink to this headline">¶</a></h4>
+<p>Download and create image:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">centos</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">centos</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">GenericCloud</span><span class="o">-</span><span class="mf">1606.</span><span class="n">qcow2</span>
+<span class="n">glance</span> <span class="n">image</span><span class="o">-</span><span class="n">create</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;centos7_image&#39;</span> <span class="o">--</span><span class="n">visibility</span><span class="o">=</span><span class="n">public</span> <span class="o">--</span><span class="n">container</span><span class="o">-</span><span class="nb">format</span><span class="o">=</span><span class="n">bare</span> <span class="o">--</span><span class="n">disk</span><span class="o">-</span><span class="nb">format</span><span class="o">=</span><span class="n">qcow2</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">GenericCloud</span><span class="o">-</span><span class="mf">1606.</span><span class="n">qcow2</span>
+
+<span class="o">+------------------+--------------------------------------+</span>
+<span class="o">|</span> <span class="n">Property</span>         <span class="o">|</span> <span class="n">Value</span>                                <span class="o">|</span>
+<span class="o">+------------------+--------------------------------------+</span>
+<span class="o">|</span> <span class="n">checksum</span>         <span class="o">|</span> <span class="mi">9</span><span class="n">a9aa58ee594ed16032885df51beb7f3</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="n">container_format</span> <span class="o">|</span> <span class="n">bare</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">created_at</span>       <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T10</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">15</span><span class="n">Z</span>                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">disk_format</span>      <span class="o">|</span> <span class="n">qcow2</span>                                <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>               <span class="o">|</span> <span class="n">a508d524</span><span class="o">-</span><span class="mi">59</span><span class="n">c8</span><span class="o">-</span><span class="mi">46</span><span class="n">da</span><span class="o">-</span><span class="mi">9056</span><span class="o">-</span><span class="n">a3ec60d18194</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">min_disk</span>         <span class="o">|</span> <span class="mi">0</span>                                    <span class="o">|</span>
+<span class="o">|</span> <span class="n">min_ram</span>          <span class="o">|</span> <span class="mi">0</span>                                    <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>             <span class="o">|</span> <span class="n">centos7_image</span>                        <span class="o">|</span>
+<span class="o">|</span> <span class="n">owner</span>            <span class="o">|</span> <span class="n">adbe784d265b48eead84e0681e2f0beb</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="n">protected</span>        <span class="o">|</span> <span class="kc">False</span>                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">size</span>             <span class="o">|</span> <span class="mi">217433246</span>                            <span class="o">|</span>
+<span class="o">|</span> <span class="n">status</span>           <span class="o">|</span> <span class="n">active</span>                               <span class="o">|</span>
+<span class="o">|</span> <span class="n">tags</span>             <span class="o">|</span> <span class="p">[]</span>                                   <span class="o">|</span>
+<span class="o">|</span> <span class="n">updated_at</span>       <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T10</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">27</span><span class="n">Z</span>                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">virtual_size</span>     <span class="o">|</span> <span class="kc">None</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">visibility</span>       <span class="o">|</span> <span class="n">public</span>                               <span class="o">|</span>
+<span class="o">+------------------+--------------------------------------+</span>
+
+<span class="n">openstack</span> <span class="n">image</span> <span class="nb">list</span>
+<span class="o">+--------------------------------------+---------------+--------+</span>
+<span class="o">|</span> <span class="n">ID</span>                                   <span class="o">|</span> <span class="n">Name</span>          <span class="o">|</span> <span class="n">Status</span> <span class="o">|</span>
+<span class="o">+--------------------------------------+---------------+--------+</span>
+<span class="o">|</span> <span class="n">a508d524</span><span class="o">-</span><span class="mi">59</span><span class="n">c8</span><span class="o">-</span><span class="mi">46</span><span class="n">da</span><span class="o">-</span><span class="mi">9056</span><span class="o">-</span><span class="n">a3ec60d18194</span> <span class="o">|</span> <span class="n">centos7_image</span> <span class="o">|</span> <span class="n">active</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">60614167</span><span class="o">-</span><span class="n">dfec</span><span class="o">-</span><span class="mi">4</span><span class="n">e5b</span><span class="o">-</span><span class="n">be5d</span><span class="o">-</span><span class="mi">1</span><span class="n">b5217c53926</span> <span class="o">|</span> <span class="n">cirros</span> <span class="n">image</span>  <span class="o">|</span> <span class="n">active</span> <span class="o">|</span>
+<span class="o">+--------------------------------------+---------------+--------+</span>
+
+
+<span class="n">openstack</span> <span class="n">flavor</span> <span class="nb">list</span>
+<span class="o">+----+-----------+-------+------+-----------+-------+-----------+</span>
+<span class="o">|</span> <span class="n">ID</span> <span class="o">|</span> <span class="n">Name</span>      <span class="o">|</span>   <span class="n">RAM</span> <span class="o">|</span> <span class="n">Disk</span> <span class="o">|</span> <span class="n">Ephemeral</span> <span class="o">|</span> <span class="n">VCPUs</span> <span class="o">|</span> <span class="n">Is</span> <span class="n">Public</span> <span class="o">|</span>
+<span class="o">+----+-----------+-------+------+-----------+-------+-----------+</span>
+<span class="o">|</span> <span class="mi">1</span>  <span class="o">|</span> <span class="n">m1</span><span class="o">.</span><span class="n">tiny</span>   <span class="o">|</span>   <span class="mi">512</span> <span class="o">|</span>    <span class="mi">1</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span> <span class="kc">True</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span>  <span class="o">|</span> <span class="n">m1</span><span class="o">.</span><span class="n">small</span>  <span class="o">|</span>  <span class="mi">2048</span> <span class="o">|</span>   <span class="mi">20</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>     <span class="mi">1</span> <span class="o">|</span> <span class="kc">True</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="mi">3</span>  <span class="o">|</span> <span class="n">m1</span><span class="o">.</span><span class="n">medium</span> <span class="o">|</span>  <span class="mi">4096</span> <span class="o">|</span>   <span class="mi">40</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>     <span class="mi">2</span> <span class="o">|</span> <span class="kc">True</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="mi">4</span>  <span class="o">|</span> <span class="n">m1</span><span class="o">.</span><span class="n">large</span>  <span class="o">|</span>  <span class="mi">8192</span> <span class="o">|</span>   <span class="mi">80</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>     <span class="mi">4</span> <span class="o">|</span> <span class="kc">True</span>      <span class="o">|</span>
+<span class="o">|</span> <span class="mi">5</span>  <span class="o">|</span> <span class="n">m1</span><span class="o">.</span><span class="n">xlarge</span> <span class="o">|</span> <span class="mi">16384</span> <span class="o">|</span>  <span class="mi">160</span> <span class="o">|</span>         <span class="mi">0</span> <span class="o">|</span>     <span class="mi">8</span> <span class="o">|</span> <span class="kc">True</span>      <span class="o">|</span>
+<span class="o">+----+-----------+-------+------+-----------+-------+-----------+</span>
+</pre></div>
+</div>
+<p>Create Key:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">openstack</span> <span class="n">keypair</span> <span class="n">create</span> <span class="n">heat_key</span> <span class="o">&gt;</span> <span class="n">heat_key</span><span class="o">.</span><span class="n">priv</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="n">heat_key</span><span class="o">.</span><span class="n">priv</span>
+
+ <span class="n">cat</span> <span class="n">heat_key</span><span class="o">.</span><span class="n">priv</span>
+<span class="o">-----</span><span class="n">BEGIN</span> <span class="n">RSA</span> <span class="n">PRIVATE</span> <span class="n">KEY</span><span class="o">-----</span>
+<span class="n">MIIEqQIBAAKCAQEA2gBpygu1UuokIGQhorBlmx6aHor0XvHHIos4MOAm05LtBUE9</span>
+<span class="n">l4yMYZuuM2y</span><span class="o">/</span><span class="mi">2</span><span class="n">w1I0zc48JyJrbE94Itk8zLk6jGk3qOlt3D2lzh6KtmS1HmIaP9N</span>
+<span class="n">urPq4TYF3fkJ72S9x7Q4M0hmEKusYOpGvzVqlXzkGVX9gqW14PKKqb5bwsdqRyYB</span>
+<span class="n">PVBLFjKfU5T7zls</span><span class="o">/</span><span class="n">lkG0POhhlurJDtjflAfwuZj55sTsTkmGnE6Q5dI41sg</span><span class="o">+</span><span class="n">R</span><span class="o">/</span><span class="n">K2</span>
+<span class="n">EskvX1nk</span><span class="o">/</span><span class="n">OVbXaAQEamxrgKiOqBa5BESkHGRCMo9HEWryI6J</span><span class="o">+</span><span class="mi">5</span><span class="n">oLJxP1P6Svn30o</span>
+<span class="n">quQVID7ijQwenUCmy4Cg</span><span class="o">/</span><span class="n">F0qXdCcWKPKMVT</span><span class="o">+</span><span class="n">MwIDAQABAoIBAC0rRsAZWvGaF</span><span class="o">/</span><span class="n">Aq</span>
+<span class="n">LxnxaKwSVCad7fI6MGOE6xidaQ4PdFLRaLyc331d72MyVjJB92PkHkUkehZmEgcT</span>
+<span class="n">etA1LF8l</span><span class="o">+</span><span class="n">B41VCHFIyLEDfQQ7q5dnBj9RRK5MqKFOgP7FMboXbYiLj7Z8mPj3iya</span>
+<span class="n">fhwiKjpdDTn</span><span class="o">+</span><span class="n">qi9GvH</span><span class="o">+</span><span class="n">mYXq4OXUK0InSBdQYGcVX7QzalY</span><span class="o">/</span><span class="mi">6</span><span class="n">SVx0iydsWoDtKJ4Z</span>
+<span class="n">G9GxniVsyhfK</span><span class="o">/</span><span class="mi">2</span><span class="n">qxX7j</span><span class="o">+</span><span class="n">eEhIDLkYU3S3dxIRFbkaQSXrTy2WAN</span><span class="o">+</span><span class="n">ifEyH3xFE3spg</span>
+<span class="n">NzdUMx0X0dyXPACE64A7125v</span><span class="o">/</span><span class="n">rz6UGjXUV35Fr2mGyJz0z6TPwkmqyZ</span><span class="o">/</span><span class="n">FLux99tv</span>
+<span class="n">urHlIpkCggCBAOIYzdwIX4XxFTcmGPpY5mk8n7y8ZMFpzXD0wZ</span><span class="o">+</span><span class="n">MgcoDwk7ZfKz</span><span class="o">/</span>
+<span class="n">bN</span><span class="o">++</span><span class="n">nJCo1yD1LpebTebll1Ntt09TYSajq4WI</span><span class="o">/</span><span class="n">cI3RBpjAVc2eB4CPQO9HLWrXJJL</span>
+<span class="n">V7zh1i0Q3o7AytB</span><span class="o">+</span><span class="n">OrYAt</span><span class="o">/</span><span class="n">q</span><span class="o">++</span><span class="n">kd4loXs5LAoUDf1ds6wyy2tXxkTTPMvAoIAgQD2</span>
+<span class="mi">1</span><span class="n">YTaAFyg67IIovsfByvaM3BkSEk4ufzoSDWkYr5kQ2xPh7p4s4n5pBjMli9tmfpk</span>
+<span class="n">do6a2bZcBnLmzPg5KKK7Guefxf9fWBpiijrU7emMO</span><span class="o">/</span><span class="mi">5</span><span class="n">jjoa3HuVR1tTve4O</span><span class="o">/</span><span class="n">pnDM</span>
+<span class="n">bNhNuhgbFRswzAwQqNi8zxVoWFuUWeL</span><span class="o">/</span><span class="n">OTLkep60PQKCAIAArDg4lmHKYTxB7MAY</span>
+<span class="n">Rplw6LhE9H6MQMdWtbO5yM4</span><span class="o">+</span><span class="n">DqLOX0FKtnvZcpS</span><span class="o">+</span><span class="n">rXHubCxWUST7MeWwXtwzxTi9</span>
+<span class="n">x7Dj9dNjd4yhU3gWjVfwJuuNjkt</span><span class="o">+</span><span class="n">kuL0oHrDWhysB6fR3ur7kdSU5A2oFldiTQ6N</span>
+<span class="n">mXXYvFX4xKc02DvSh</span><span class="o">/</span><span class="n">iHd5I8CwKCAIEAmirQWGzjberofrZ1DHMpM5bvOuNfQFwC</span>
+<span class="n">F36Kaor2CZ</span><span class="o">+</span><span class="n">G9cF7eUoCAnc4ugePxe</span><span class="o">/</span><span class="n">nUXovJY6XdLDecUNSQjkcMqriQoujLgTU</span>
+<span class="n">LfnSNw4F0f3irIHnqFZWup</span><span class="o">/</span><span class="n">ozU8jAb</span><span class="o">/</span><span class="n">OMhBFpX528etj2T2Ix5r</span><span class="o">+</span><span class="n">DCd3Yn3VbTob</span>
+<span class="n">KneqTsQ7fa0CggCBAKK8Uq4wcV54gkcFL9LNt3JR2MJyoCZ53Z9U3gCM8K2737Q1</span>
+<span class="mi">7</span><span class="n">fwJ</span><span class="o">/</span><span class="n">OxD0M41rmUG16wUe3Df7BglRC89J4VTDlZr</span><span class="o">/</span><span class="mi">4</span><span class="n">QPSoPwVj81lxMqbwDXy</span><span class="o">+</span><span class="n">v</span><span class="o">/</span>
+<span class="n">GQlexZdvZeMcPYXOM3OZf5wbdndujmk92baxLDyXNVpcnjFFTxDsXaFZwTzO</span>
+<span class="o">-----</span><span class="n">END</span> <span class="n">RSA</span> <span class="n">PRIVATE</span> <span class="n">KEY</span><span class="o">-----</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-provider-network">
+<h4>Create provider Network<a class="headerlink" href="#create-provider-network" title="Permalink to this headline">¶</a></h4>
+<p>before create provider network (Admin Privileges) for external network, We must
+check config below <code class="docutils literal"><span class="pre">bridge_mappings</span></code> that we will user in <code class="docutils literal"><span class="pre">--provider:physical_network</span> <span class="pre">ext-net</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">neutron</span><span class="o">/</span><span class="n">plugins</span><span class="o">/</span><span class="n">ml2</span><span class="o">/</span><span class="n">openvswitch_agent</span><span class="o">.</span><span class="n">ini</span>
+<span class="mi">217</span> <span class="n">bridge_mappings</span> <span class="o">=</span><span class="n">ext</span><span class="o">-</span><span class="n">net</span><span class="p">:</span><span class="n">br</span><span class="o">-</span><span class="n">ex</span>
+</pre></div>
+</div>
+<p>create network (L2 segment):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neutron</span> <span class="n">net</span><span class="o">-</span><span class="n">create</span> <span class="n">external_network</span> <span class="o">--</span><span class="n">provider</span><span class="p">:</span><span class="n">network_type</span> <span class="n">flat</span> <span class="o">--</span><span class="n">provider</span><span class="p">:</span><span class="n">physical_network</span> <span class="n">ext</span><span class="o">-</span><span class="n">net</span>  <span class="o">--</span><span class="n">router</span><span class="p">:</span><span class="n">external</span>
+<span class="n">Created</span> <span class="n">a</span> <span class="n">new</span> <span class="n">network</span><span class="p">:</span>
+<span class="o">+---------------------------+--------------------------------------+</span>
+<span class="o">|</span> <span class="n">Field</span>                     <span class="o">|</span> <span class="n">Value</span>                                <span class="o">|</span>
+<span class="o">+---------------------------+--------------------------------------+</span>
+<span class="o">|</span> <span class="n">admin_state_up</span>            <span class="o">|</span> <span class="kc">True</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">availability_zone_hints</span>   <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">availability_zones</span>        <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">created_at</span>                <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T11</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">07</span>                  <span class="o">|</span>
+<span class="o">|</span> <span class="n">description</span>               <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>                        <span class="o">|</span> <span class="mi">59</span><span class="n">e6dd3e</span><span class="o">-</span><span class="mi">68</span><span class="n">b4</span><span class="o">-</span><span class="mi">49</span><span class="n">ed</span><span class="o">-</span><span class="mi">863</span><span class="n">d</span><span class="o">-</span><span class="mi">84651330</span><span class="n">ba65</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv4_address_scope</span>        <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_address_scope</span>        <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">is_default</span>                <span class="o">|</span> <span class="kc">False</span>                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">mtu</span>                       <span class="o">|</span> <span class="mi">1500</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>                      <span class="o">|</span> <span class="n">external_network</span>                     <span class="o">|</span>
+<span class="o">|</span> <span class="n">provider</span><span class="p">:</span><span class="n">network_type</span>     <span class="o">|</span> <span class="n">flat</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">provider</span><span class="p">:</span><span class="n">physical_network</span> <span class="o">|</span> <span class="n">ext</span><span class="o">-</span><span class="n">net</span>                              <span class="o">|</span>
+<span class="o">|</span> <span class="n">provider</span><span class="p">:</span><span class="n">segmentation_id</span>  <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">router</span><span class="p">:</span><span class="n">external</span>           <span class="o">|</span> <span class="kc">True</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">shared</span>                    <span class="o">|</span> <span class="kc">False</span>                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">status</span>                    <span class="o">|</span> <span class="n">ACTIVE</span>                               <span class="o">|</span>
+<span class="o">|</span> <span class="n">subnets</span>                   <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">tags</span>                      <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">tenant_id</span>                 <span class="o">|</span> <span class="n">adbe784d265b48eead84e0681e2f0beb</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="n">updated_at</span>                <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T11</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">07</span>                  <span class="o">|</span>
+<span class="o">+---------------------------+--------------------------------------+</span>
+</pre></div>
+</div>
+<p>Verify from UI
+.. image:: _images/heatlab01.png</p>
+<p>Edit Network to share</p>
+<img alt="_images/heatlab02.png" src="_images/heatlab02.png" />
+<p>Verify Network info:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neutron</span> <span class="n">net</span><span class="o">-</span><span class="n">show</span> <span class="mi">59</span><span class="n">e6dd3e</span><span class="o">-</span><span class="mi">68</span><span class="n">b4</span><span class="o">-</span><span class="mi">49</span><span class="n">ed</span><span class="o">-</span><span class="mi">863</span><span class="n">d</span><span class="o">-</span><span class="mi">84651330</span><span class="n">ba65</span>
+<span class="o">+---------------------------+--------------------------------------+</span>
+<span class="o">|</span> <span class="n">Field</span>                     <span class="o">|</span> <span class="n">Value</span>                                <span class="o">|</span>
+<span class="o">+---------------------------+--------------------------------------+</span>
+<span class="o">|</span> <span class="n">admin_state_up</span>            <span class="o">|</span> <span class="kc">True</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">availability_zone_hints</span>   <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">availability_zones</span>        <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">created_at</span>                <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T11</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">07</span>                  <span class="o">|</span>
+<span class="o">|</span> <span class="n">description</span>               <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>                        <span class="o">|</span> <span class="mi">59</span><span class="n">e6dd3e</span><span class="o">-</span><span class="mi">68</span><span class="n">b4</span><span class="o">-</span><span class="mi">49</span><span class="n">ed</span><span class="o">-</span><span class="mi">863</span><span class="n">d</span><span class="o">-</span><span class="mi">84651330</span><span class="n">ba65</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv4_address_scope</span>        <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_address_scope</span>        <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">is_default</span>                <span class="o">|</span> <span class="kc">False</span>                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">mtu</span>                       <span class="o">|</span> <span class="mi">1500</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>                      <span class="o">|</span> <span class="n">external_network</span>                     <span class="o">|</span>
+<span class="o">|</span> <span class="n">provider</span><span class="p">:</span><span class="n">network_type</span>     <span class="o">|</span> <span class="n">flat</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">provider</span><span class="p">:</span><span class="n">physical_network</span> <span class="o">|</span> <span class="n">ext</span><span class="o">-</span><span class="n">net</span>                              <span class="o">|</span>
+<span class="o">|</span> <span class="n">provider</span><span class="p">:</span><span class="n">segmentation_id</span>  <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">router</span><span class="p">:</span><span class="n">external</span>           <span class="o">|</span> <span class="kc">True</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">shared</span>                    <span class="o">|</span> <span class="kc">True</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">status</span>                    <span class="o">|</span> <span class="n">ACTIVE</span>                               <span class="o">|</span>
+<span class="o">|</span> <span class="n">subnets</span>                   <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">tags</span>                      <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">tenant_id</span>                 <span class="o">|</span> <span class="n">adbe784d265b48eead84e0681e2f0beb</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="n">updated_at</span>                <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T11</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">04</span>                  <span class="o">|</span>
+<span class="o">+---------------------------+--------------------------------------+</span>
+</pre></div>
+</div>
+<p>or verify from ui</p>
+<img alt="_images/heatlab03.png" src="_images/heatlab03.png" />
+<img alt="_images/heatlab04.png" src="_images/heatlab04.png" />
+</div>
+<div class="section" id="create-sub-network-l3-segment">
+<h4>create sub network (L3 segment)<a class="headerlink" href="#create-sub-network-l3-segment" title="Permalink to this headline">¶</a></h4>
+<p>check subnet of provider network:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="o">-</span><span class="mi">4</span> <span class="n">a</span> <span class="n">s</span> <span class="n">br</span><span class="o">-</span><span class="n">ex</span>
+<span class="mi">10</span><span class="p">:</span> <span class="n">br</span><span class="o">-</span><span class="n">ex</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">BROADCAST</span><span class="p">,</span><span class="n">MULTICAST</span><span class="p">,</span><span class="n">UP</span><span class="p">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">1500</span> <span class="n">qdisc</span> <span class="n">noqueue</span> <span class="n">state</span> <span class="n">UNKNOWN</span>
+    <span class="n">inet</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.200</span><span class="o">/</span><span class="mi">24</span> <span class="n">brd</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.255</span> <span class="n">scope</span> <span class="k">global</span> <span class="n">br</span><span class="o">-</span><span class="n">ex</span>
+       <span class="n">valid_lft</span> <span class="n">forever</span> <span class="n">preferred_lft</span> <span class="n">forever</span>
+</pre></div>
+</div>
+<p>create subnet no dhcp and pool in <code class="docutils literal"><span class="pre">192.168.56.0/24</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neutron</span> <span class="n">subnet</span><span class="o">-</span><span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">public_subnet</span> <span class="o">--</span><span class="n">enable_dhcp</span><span class="o">=</span><span class="kc">False</span> <span class="o">--</span><span class="n">allocation</span><span class="o">-</span><span class="n">pool</span><span class="o">=</span><span class="n">start</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">56.210</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">56.220</span> \
+<span class="o">--</span><span class="n">dns</span><span class="o">-</span><span class="n">nameserver</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span>  <span class="o">--</span><span class="n">gateway</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">56.1</span> <span class="n">external_network</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.0</span><span class="o">/</span><span class="mi">24</span>
+
+<span class="n">Created</span> <span class="n">a</span> <span class="n">new</span> <span class="n">subnet</span><span class="p">:</span>
+<span class="o">+-------------------+------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">Field</span>             <span class="o">|</span> <span class="n">Value</span>                                                <span class="o">|</span>
+<span class="o">+-------------------+------------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">allocation_pools</span>  <span class="o">|</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.56.210&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.56.220&quot;</span><span class="p">}</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">cidr</span>              <span class="o">|</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.0</span><span class="o">/</span><span class="mi">24</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">created_at</span>        <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T11</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">34</span>                                  <span class="o">|</span>
+<span class="o">|</span> <span class="n">description</span>       <span class="o">|</span>                                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">dns_nameservers</span>   <span class="o">|</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span>                                              <span class="o">|</span>
+<span class="o">|</span> <span class="n">enable_dhcp</span>       <span class="o">|</span> <span class="kc">False</span>                                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">gateway_ip</span>        <span class="o">|</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">56.1</span>                                         <span class="o">|</span>
+<span class="o">|</span> <span class="n">host_routes</span>       <span class="o">|</span>                                                      <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>                <span class="o">|</span> <span class="mi">93</span><span class="n">cd697a</span><span class="o">-</span><span class="n">c480</span><span class="o">-</span><span class="mi">42</span><span class="n">bf</span><span class="o">-</span><span class="mi">9</span><span class="n">d46</span><span class="o">-</span><span class="n">ed45dea185bb</span>                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">ip_version</span>        <span class="o">|</span> <span class="mi">4</span>                                                    <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_address_mode</span> <span class="o">|</span>                                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_ra_mode</span>      <span class="o">|</span>                                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>              <span class="o">|</span> <span class="n">public_subnet</span>                                        <span class="o">|</span>
+<span class="o">|</span> <span class="n">network_id</span>        <span class="o">|</span> <span class="mi">59</span><span class="n">e6dd3e</span><span class="o">-</span><span class="mi">68</span><span class="n">b4</span><span class="o">-</span><span class="mi">49</span><span class="n">ed</span><span class="o">-</span><span class="mi">863</span><span class="n">d</span><span class="o">-</span><span class="mi">84651330</span><span class="n">ba65</span>                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">subnetpool_id</span>     <span class="o">|</span>                                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">tenant_id</span>         <span class="o">|</span> <span class="n">adbe784d265b48eead84e0681e2f0beb</span>                     <span class="o">|</span>
+<span class="o">|</span> <span class="n">updated_at</span>        <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T11</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">34</span>                                  <span class="o">|</span>
+<span class="o">+-------------------+------------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>verify from ui</p>
+<img alt="_images/heatlab05.png" src="_images/heatlab05.png" />
+<img alt="_images/heatlab06.png" src="_images/heatlab06.png" />
+<p>From now change user to demo user. we need credential file like admin have. we will
+get it from  horizon</p>
+<img alt="_images/demo01.png" src="_images/demo01.png" />
+<p>create demorc_v3 by goto <code class="docutils literal"><span class="pre">Project</span> <span class="pre">&gt;</span> <span class="pre">Access</span> <span class="pre">&amp;</span> <span class="pre">Security</span> <span class="pre">&gt;</span> <span class="pre">Download</span> <span class="pre">Openstack</span> <span class="pre">RC</span> <span class="pre">File</span> <span class="pre">V3</span></code></p>
+<img alt="_images/demo02.png" src="_images/demo02.png" />
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">vim</span>  <span class="n">demorc_v3</span>
+<span class="n">source</span> <span class="n">demorc_v3</span>
+<span class="n">Please</span> <span class="n">enter</span> <span class="n">your</span> <span class="n">OpenStack</span> <span class="n">Password</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>create Tenent Network or Private network (user privileges):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">source</span> <span class="n">demorc_v3</span>
+
+<span class="n">neutron</span> <span class="n">net</span><span class="o">-</span><span class="n">create</span> <span class="n">private</span>
+<span class="n">Created</span> <span class="n">a</span> <span class="n">new</span> <span class="n">network</span><span class="p">:</span>
+<span class="o">+-------------------------+--------------------------------------+</span>
+<span class="o">|</span> <span class="n">Field</span>                   <span class="o">|</span> <span class="n">Value</span>                                <span class="o">|</span>
+<span class="o">+-------------------------+--------------------------------------+</span>
+<span class="o">|</span> <span class="n">admin_state_up</span>          <span class="o">|</span> <span class="kc">True</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">availability_zone_hints</span> <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">availability_zones</span>      <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">created_at</span>              <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T12</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">08</span>                  <span class="o">|</span>
+<span class="o">|</span> <span class="n">description</span>             <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>                      <span class="o">|</span> <span class="n">bd8b7de6</span><span class="o">-</span><span class="n">c013</span><span class="o">-</span><span class="mi">43</span><span class="n">a6</span><span class="o">-</span><span class="n">b32a</span><span class="o">-</span><span class="mi">08747</span><span class="n">d467e8a</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv4_address_scope</span>      <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_address_scope</span>      <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">mtu</span>                     <span class="o">|</span> <span class="mi">1500</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>                    <span class="o">|</span> <span class="n">private</span>                              <span class="o">|</span>
+<span class="o">|</span> <span class="n">router</span><span class="p">:</span><span class="n">external</span>         <span class="o">|</span> <span class="kc">False</span>                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">shared</span>                  <span class="o">|</span> <span class="kc">False</span>                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">status</span>                  <span class="o">|</span> <span class="n">ACTIVE</span>                               <span class="o">|</span>
+<span class="o">|</span> <span class="n">subnets</span>                 <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">tags</span>                    <span class="o">|</span>                                      <span class="o">|</span>
+<span class="o">|</span> <span class="n">tenant_id</span>               <span class="o">|</span> <span class="n">f47553804d5d48529eea395c29da941d</span>     <span class="o">|</span>
+<span class="o">|</span> <span class="n">updated_at</span>              <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T12</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">08</span>                  <span class="o">|</span>
+<span class="o">+-------------------------+--------------------------------------+</span>
+</pre></div>
+</div>
+<p>Non-privileged users typically cannot supply additional parameters to this command.
+The service automatically chooses paramters using information from the following files:</p>
+<p>ml2_conf.ini:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">neutron</span><span class="o">/</span><span class="n">plugins</span><span class="o">/</span><span class="n">ml2</span><span class="o">/</span><span class="n">ml2_conf</span><span class="o">.</span><span class="n">ini</span>
+
+<span class="p">[</span><span class="n">ml2</span><span class="p">]</span>
+<span class="n">type_drivers</span> <span class="o">=</span> <span class="n">vlan</span><span class="p">,</span><span class="n">vxlan</span><span class="p">,</span><span class="n">gre</span><span class="p">,</span><span class="n">flat</span><span class="p">,</span><span class="n">local</span>
+<span class="n">tenant_network_types</span> <span class="o">=</span> <span class="n">local</span><span class="p">,</span><span class="n">vlan</span><span class="p">,</span><span class="n">gre</span><span class="p">,</span><span class="n">vxlan</span>
+
+<span class="p">[</span><span class="n">ml2_type_vlan</span><span class="p">]</span>
+<span class="n">network_vlan_ranges</span> <span class="o">=</span><span class="n">physnet2</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">1000</span>
+
+<span class="p">[</span><span class="n">ml2_type_vxlan</span><span class="p">]</span>
+<span class="n">vni_ranges</span> <span class="o">=</span><span class="mi">10</span><span class="p">:</span><span class="mi">100</span>
+</pre></div>
+</div>
+<p>create subnet:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neutron</span> <span class="n">subnet</span><span class="o">-</span><span class="n">create</span> <span class="n">private</span> <span class="mf">172.16</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span> <span class="o">--</span><span class="n">name</span> <span class="n">private_subnet</span> \
+<span class="o">--</span><span class="n">dns</span><span class="o">-</span><span class="n">nameserver</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span> <span class="o">--</span><span class="n">gateway</span> <span class="mf">172.16</span><span class="o">.</span><span class="mf">1.1</span>
+
+<span class="n">Created</span> <span class="n">a</span> <span class="n">new</span> <span class="n">subnet</span><span class="p">:</span>
+<span class="o">+-------------------+------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">Field</span>             <span class="o">|</span> <span class="n">Value</span>                                          <span class="o">|</span>
+<span class="o">+-------------------+------------------------------------------------+</span>
+<span class="o">|</span> <span class="n">allocation_pools</span>  <span class="o">|</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;172.16.1.2&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="s2">&quot;172.16.1.254&quot;</span><span class="p">}</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">cidr</span>              <span class="o">|</span> <span class="mf">172.16</span><span class="o">.</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">24</span>                                  <span class="o">|</span>
+<span class="o">|</span> <span class="n">created_at</span>        <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T12</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">58</span>                            <span class="o">|</span>
+<span class="o">|</span> <span class="n">description</span>       <span class="o">|</span>                                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">dns_nameservers</span>   <span class="o">|</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">4.4</span>                                        <span class="o">|</span>
+<span class="o">|</span> <span class="n">enable_dhcp</span>       <span class="o">|</span> <span class="kc">True</span>                                           <span class="o">|</span>
+<span class="o">|</span> <span class="n">gateway_ip</span>        <span class="o">|</span> <span class="mf">172.16</span><span class="o">.</span><span class="mf">1.1</span>                                     <span class="o">|</span>
+<span class="o">|</span> <span class="n">host_routes</span>       <span class="o">|</span>                                                <span class="o">|</span>
+<span class="o">|</span> <span class="nb">id</span>                <span class="o">|</span> <span class="mi">81</span><span class="n">c13ec9</span><span class="o">-</span><span class="n">b2c2</span><span class="o">-</span><span class="mi">4</span><span class="n">a7b</span><span class="o">-</span><span class="n">b98e</span><span class="o">-</span><span class="mi">9</span><span class="n">fb5502824c0</span>           <span class="o">|</span>
+<span class="o">|</span> <span class="n">ip_version</span>        <span class="o">|</span> <span class="mi">4</span>                                              <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_address_mode</span> <span class="o">|</span>                                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">ipv6_ra_mode</span>      <span class="o">|</span>                                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">name</span>              <span class="o">|</span> <span class="n">private_subnet</span>                                 <span class="o">|</span>
+<span class="o">|</span> <span class="n">network_id</span>        <span class="o">|</span> <span class="n">bd8b7de6</span><span class="o">-</span><span class="n">c013</span><span class="o">-</span><span class="mi">43</span><span class="n">a6</span><span class="o">-</span><span class="n">b32a</span><span class="o">-</span><span class="mi">08747</span><span class="n">d467e8a</span>           <span class="o">|</span>
+<span class="o">|</span> <span class="n">subnetpool_id</span>     <span class="o">|</span>                                                <span class="o">|</span>
+<span class="o">|</span> <span class="n">tenant_id</span>         <span class="o">|</span> <span class="n">f47553804d5d48529eea395c29da941d</span>               <span class="o">|</span>
+<span class="o">|</span> <span class="n">updated_at</span>        <span class="o">|</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">27</span><span class="n">T12</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">58</span>                            <span class="o">|</span>
+<span class="o">+-------------------+------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>verify ui</p>
+<img alt="_images/demo03.png" src="_images/demo03.png" />
+<img alt="_images/demo04.png" src="_images/demo04.png" />
+</div>
+<div class="section" id="network-type-of-tenent-network">
+<h4>Network type of Tenent network<a class="headerlink" href="#network-type-of-tenent-network" title="Permalink to this headline">¶</a></h4>
+<p>from value <code class="docutils literal"><span class="pre">tenant_network_types</span> <span class="pre">=</span> <span class="pre">local,vlan,gre,vxlan</span></code> openstack choose first
+option is list is local for tenent network.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">only admin can change Network type</p>
+</div>
+<img alt="_images/demo05.png" src="_images/demo05.png" />
+</div>
+<div class="section" id="definition">
+<h4>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/demo06.png" src="_images/demo06.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="heat-template.html" class="btn btn-neutral float-right" title="Heat Orchestration Template (HOT) Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to Heat Orchestration’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, sawangpong muadphet &lt;sawangpong@itbakery.net&gt;.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'lastest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
